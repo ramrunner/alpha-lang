@@ -1,0 +1,32 @@
+function math()
+{
+	return[	{ "add" : (function(x,y){return x+y;}) },
+		{ "mul" : (function(x,y){return x*y;}) },
+		{ "fib" : (
+				function(x)
+				{
+					if (x>1)
+					{
+						o = math();
+						return x*o.fib(x-1);
+					}
+					else
+						return 1;
+				}
+			  )},
+		{ "copy" : math }
+		];
+}
+
+o = math();
+o1 = o.copy();
+
+y = 3;
+
+for (x=0; x<7; x++)
+{
+	print(x, " + ", y, " = ", o1.add(x,y));
+	print(x, " * ", y, " = ", o1.mul(x,y));
+	print(x , "! = " , o1.fib(x));
+	print();
+}

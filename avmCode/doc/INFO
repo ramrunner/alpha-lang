@@ -1,0 +1,31 @@
+top -> at the end of local variables
+topsp -> at the end of saved pointers and sp
+
+_________
+CPU stack
+---------
+
+==STACK TOP==		<- top			^     _
+local_m						|      |
+local_m-1					|	\
+.						|	 |
+.						|	 |
+.						|	 |
+local_1			<- topsp		|	 |
+saved_topsp						 |
+saved_top					^	  > Activation Record
+saved_pc					|	 |
+n						|	 |
+form_n						|	 |
+form_n-1					|	 |
+.							 |
+.						^	/
+.						|      _|
+form_1			<- saved_top		|
+global_N					|
+global_N-1					|
+.
+.						^
+.						|
+global_1					|
+==STACK BOTTOM==				|

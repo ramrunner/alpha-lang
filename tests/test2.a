@@ -1,0 +1,20 @@
+function f()
+{
+	return (
+		function()
+		{
+			return (
+				function()
+				{
+					return (
+						function(x)
+						{
+							return x;
+						}
+						);
+				}
+				);
+		}
+		);
+}
+z = f()()()(2);

@@ -1,0 +1,28 @@
+#ifndef __TABLE_HEADER
+#define __TABLE_HEADER
+
+#include <utility>
+#include "memCell.h"
+
+class Table
+{
+	public:
+		MemCell*			getValue(MemCell *key);
+		MemCell*			getValue(int i)			{	return this->kvTable[i].second;		}
+		MemCell*			getKey(int i)			{	return this->kvTable[i].first;	 	}
+		long 				size()				{	return this->kvTable.size();		}
+
+		void				change(MemCell *,MemCell *);
+
+		void				incRef()			{	this->refCounter++;			}
+		void				decRef()			{	if (--this->refCounter<=0)  delete this;}
+
+		friend bool			operator==(const Table& left, const Table& right);
+
+	private:
+		int refCounter;
+		vector< pair<MemCell*, MemCell*> > kvTable;
+};
+
+
+#endif
